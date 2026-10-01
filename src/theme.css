@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --bg: #12141c;
+  --bg-elevated: #1a1d29;
+  --bg-card: #1e2230;
+  --border: #2c3042;
+  --text-primary: #edeff4;
+  --text-secondary: #9aa0b4;
+  --text-muted: #6b7189;
+  --accent: #ffb84d;
+  --accent-dim: #7a5a2e;
+  --accent-2: #5eead4;
+  --danger: #ff6b6b;
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --radius: 10px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  scrollbar-width: 4px;
+  scrollbar-color: rgba(255, 184, 77, 0.8) transparent;
+}
+
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 184, 77, 0.8);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+a {
+  color: var(--accent-2);
+}
+
+::selection {
+  background: var(--accent);
+  color: #1a1a1a;
+}
+
+/* subtle scanline / grid backdrop */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}
+
+.app-shell > .container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell footer {
+  margin-top: auto;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-muted-custom {
+  color: var(--text-muted);
+}
+
+.text-secondary-custom {
+  color: var(--text-secondary);
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsive username search input + button */
+.uac-form {
+  display: flex;
+  align-items: stretch;
+}
+.uac-input-wrap {
+  border-radius: 8px 0 0 8px !important;
+  border-right: none !important;
+}
+.uac-submit-btn {
+  border-radius: 0 8px 8px 0 !important;
+}
+
+@media (max-width: 767px) {
+  .repo-toolbar {
+    align-items: stretch !important;
+  }
+
+  .repo-toolbar > h3,
+  .repo-tools {
+    width: 100%;
+  }
+
+  .repo-tools {
+    flex-wrap: nowrap !important;
+  }
+
+  .repo-filter,
+  .repo-sort,
+  .repo-visibility {
+    flex: 1 1 0;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .search-heading {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .search-controls {
+    width: 100%;
+    gap: 8px !important;
+  }
+
+  .search-clear {
+    width: 40px !important;
+    min-height: 88px;
+  }
+
+  .uac-form {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .uac-input-wrap {
+    border-radius: 8px !important;
+    border-right: 1px solid var(--border) !important;
+    min-height: 44px;
+  }
+
+  .uac-submit-btn {
+    border-radius: 8px !important;
+    margin-top: 0;
+    justify-content: center;
+    width: 100%;
+    min-height: 38px;
+  }
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 16, 0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
